@@ -1,0 +1,23 @@
+[project]
+name = "vibracao"
+version = "1.2.0"
+description = "Pipeline de pré-processamento do sensor de vibração (UFJF 1322010, Unidade 3)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "scipy>=1.13",
+    "matplotlib>=3.9",
+]
+
+[project.scripts]
+vibracao = "vibracao.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.9,<0.14"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "vibracao"
+module-root = "analise"
