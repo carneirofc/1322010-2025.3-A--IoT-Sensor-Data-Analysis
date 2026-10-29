@@ -1,0 +1,87 @@
+# =============================================================================
+#  report.yaml — single source of truth for the report's identity.
+#  Everything on the cover, title page, abstracts and document properties
+#  comes from here. The body lives in content/*.md (built in filename order).
+#  Values are parsed as Markdown (*italic*, **bold**, `code` work).
+# =============================================================================
+report:
+  institution: UNIVERSIDADE FEDERAL DE JUIZ DE FORA
+  department: DEPARTAMENTO DE CIÊNCIA DA COMPUTAÇÃO
+  # Course code + name as shown on the cover (leave empty to omit).
+  course: 1322010-2025.3-A — ANÁLISE DE DADOS DE DISPOSITIVOS IOT E DE SENSORES
+  logo: assets/ufjf-logo.jpg
+  logo-width: 5cm
+
+  authors:
+    - Claudio Ferreira Carneiro
+
+  title: PIPELINE DE PRÉ-PROCESSAMENTO DE DADOS DE UM SENSOR DE VIBRAÇÃO INDUSTRIAL
+  subtitle: "Atividade da Unidade 3 — Pré-processamento de dados de sensores"
+
+  # "Natureza do trabalho" (ABNT folha de rosto): right-aligned block.
+  nature: >-
+    Relatório técnico apresentado à disciplina Análise de Dados de
+    Dispositivos IoT e de Sensores (1322010-2025.3-A), do Departamento de Ciência da Computação da
+    Universidade Federal de Juiz de Fora.
+  advisor: ""           # e.g. "Prof. Dr. Fulano de Tal" — omitted when empty
+  advisor-label: "Orientador:"
+
+  city: Leopoldina-MG
+  year: 2026
+
+  # Abstracts. Set either one to "" to drop that page.
+  resumo: >-
+    Este relatório responde à atividade da Unidade 3, que pede uma sequência
+    de pré-processamento para o sensor de vibração de uma máquina industrial.
+    O sensor faz uma leitura por segundo e tem cerca de 2% de valores
+    ausentes, picos muito altos, ruído e diferentes regimes de operação.
+    Propõe-se um pipeline de oito etapas: conhecer os dados, verificar a
+    estrutura, verificar a validade, identificar outliers, tratar dados
+    faltantes, filtrar o ruído, ajustar a escala e validar o resultado. Os
+    outliers são identificados pelo filtro de Hampel, calculado para cada
+    regime de operação. Um pico só é removido quando é curto e a corrente do
+    motor não confirma a falha. O pipeline foi aplicado a oito horas de dados
+    sintéticos com problemas conhecidos. Ele removeu as 180 duplicatas, os 3
+    valores negativos, as 36 leituras de picos falsos e 4 saturações sem
+    reação da corrente, e preservou os dois eventos reais simulados. Na comparação de filtros, a média e a mediana móveis
+    reduziram muito a altura de um impacto real de 4 s. Por isso, adotou-se o filtro de
+    Savitzky–Golay sem suavizar os trechos de evento. A padronização só é
+    necessária para modelos de aprendizado de máquina e, nesse caso, deve ser
+    calculada apenas com os dados de treino.
+  palavras-chave: [Pré-processamento, Sensor de vibração, Filtro de Hampel, Dados faltantes, Auditoria de dados]
+
+  abstract: >-
+    This report answers the Unit 3 assignment, which asks for a preprocessing
+    sequence for the vibration sensor of an industrial machine. The sensor
+    reads once per second and has about 2% missing values, very high spikes,
+    noise and several operating regimes. An eight-step pipeline is proposed:
+    know the data, check structure, check validity, identify outliers, handle
+    missing data, filter noise, adjust scale and validate the result. Outliers
+    are found with a Hampel filter computed per operating regime. A spike is
+    removed only when it is short and the motor current does not confirm a
+    fault. Applied to eight hours of synthetic data with known problems, the
+    pipeline removed the 180 duplicates, the 3 negative readings, the 36
+    false-spike readings and 4 saturated readings with no current response,
+    and kept both simulated real events. Moving average and
+    median filters greatly reduced the height of a real 4 s impact, so a Savitzky–Golay filter
+    that leaves event windows unsmoothed was adopted. Standardization is
+    needed only for machine learning models and must then be fitted on the
+    training data only.
+  keywords: [Preprocessing, Vibration sensor, Hampel filter, Missing data, Data auditing]
+
+# ---------------------------------------------------------------------------
+#  Pretextual lists (PDF). The summary (SUMÁRIO) is always generated.
+# ---------------------------------------------------------------------------
+lof: true              # Lista de figuras
+lot: true              # Lista de tabelas
+
+# ---------------------------------------------------------------------------
+#  Typography (PDF). Fonts must be visible to LuaLaTeX (system or TeX tree).
+#  TeX Gyre Termes is a free Times clone shipped with TeX Live.
+#  Use "Times New Roman" / "Arial" if they're installed locally.
+# ---------------------------------------------------------------------------
+mainfont: TeX Gyre Termes
+# Code (appendix): Liberation Mono covers the Greek letters and math symbols
+# used in the script's comments (α, ≈), which Latin Modern Mono lacks.
+monofont: Liberation Mono
+monofontoptions: [Scale=MatchLowercase]
