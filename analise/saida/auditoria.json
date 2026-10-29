@@ -1,6 +1,6 @@
 {
-  "pipeline_versao": "1.1.1",
-  "script_sha256": "fee4201dcf3ad5e7ceafecaacf5b6472d071a21807edcd7d9ad1ad9d2c651518",
+  "pipeline_versao": "1.2.0",
+  "codigo_sha256": "399ef1a62018f652834dda3b130f0d31ff20c7f83f12a226664eeec5b4c78565",
   "fonte": {
     "device_id": "maq-07",
     "measurement_id": "vib_rms_mm_s",
