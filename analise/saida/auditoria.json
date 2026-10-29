@@ -1,0 +1,310 @@
+{
+  "pipeline_versao": "1.1.1",
+  "script_sha256": "fee4201dcf3ad5e7ceafecaacf5b6472d071a21807edcd7d9ad1ad9d2c651518",
+  "fonte": {
+    "device_id": "maq-07",
+    "measurement_id": "vib_rms_mm_s",
+    "seed": 1322010,
+    "entradas_sha256": {
+      "entrada_vibracao.csv.gz": "ce0f5c7aaef8ae6b72f03c07e06313786635e93e99ded0415fe2cb123a597f22",
+      "entrada_corrente.csv.gz": "b6548ba4af50db47705dbc93c70a9243998207c6096e169e19022ae8de077ba8"
+    }
+  },
+  "parametros": {
+    "faixa_fisica_mm_s": [
+      0.0,
+      50.0
+    ],
+    "flatline_janela_s": 60,
+    "regime_corrente_limiares_A": [
+      2.0,
+      12.0,
+      20.0
+    ],
+    "regime_suavizacao_s": 15,
+    "transiente_margem_s": 60,
+    "outlier_janela_baseline_s": 301,
+    "outlier_z_robusto": 6.0,
+    "outlier_agrupamento_s": 5,
+    "artefato_duracao_max_s": 3,
+    "corroboracao_z_corrente": 3.0,
+    "gap_interpolavel_max_s": 5,
+    "savgol_janela_s": 11,
+    "savgol_ordem": 2,
+    "divisao_cronologica": [
+      0.7,
+      0.15,
+      0.15
+    ]
+  },
+  "parametros_sha256": "f1c9a4de39a309be79e1582b848910c9e5302553ae302b6dcb18409300d98465",
+  "flags": {
+    "AUSENTE_ORIGINAL": 1,
+    "FORA_DA_FAIXA": 2,
+    "FLATLINE": 4,
+    "ARTEFATO_PICO": 8,
+    "EVENTO_CANDIDATO": 16,
+    "IMPUTADO_LINEAR": 32,
+    "LACUNA_LONGA": 64,
+    "TRANSIENTE_REGIME": 128,
+    "SATURADO": 256
+  },
+  "contagens": {
+    "linhas_recebidas": 28435,
+    "duplicados_com_valor_diferente": 0,
+    "duplicados_removidos": 180,
+    "leituras_movidas_para_segundo_vizinho": 0,
+    "colisoes_apos_arredondar": 0,
+    "ausentes_na_grade": 575,
+    "taxa_ausencia": 0.019965277777777776,
+    "fora_da_faixa": 3,
+    "saturadas": 4,
+    "flatline": 0,
+    "segmentos": 11,
+    "amostras_artefato": 40,
+    "saturadas_removidas_como_pico_falso": 4,
+    "picos_falsos_removidos": 36,
+    "candidatos_em_transiente": 7,
+    "eventos_preservados": [
+      {
+        "inicio": "2026-10-20 08:46:40",
+        "duracao_s": 4,
+        "pico_mm_s": 14.89,
+        "z_vibracao_max": 19.2,
+        "z_corrente_mediano": 9.8,
+        "decisao": "preservado (persistente e corroborado pela corrente)"
+      },
+      {
+        "inicio": "2026-10-20 12:23:29",
+        "duracao_s": 127,
+        "pico_mm_s": 15.78,
+        "z_vibracao_max": 19.1,
+        "z_corrente_mediano": 8.0,
+        "decisao": "preservado (persistente e corroborado pela corrente)"
+      }
+    ],
+    "desvio_robusto_por_regime_mm_s": {
+      "parada": 0.08,
+      "vazio": 0.177,
+      "carga": 0.321,
+      "alta": 0.478
+    },
+    "lacunas": {
+      "curtas": 434,
+      "longas": 4,
+      "amostras_imputadas": 442,
+      "amostras_lacuna_longa": 176
+    },
+    "taxa_ausencia_por_regime": {
+      "parada": 0.024,
+      "vazio": 0.0154,
+      "carga": 0.0193,
+      "alta": 0.0206
+    },
+    "escalonamento": {
+      "parametros_por_regime_treino": {
+        "parada": {
+          "mediana": 0.254,
+          "iqr": 0.047
+        },
+        "vazio": {
+          "mediana": 1.608,
+          "iqr": 0.135
+        },
+        "carga": {
+          "mediana": 3.781,
+          "iqr": 0.255
+        },
+        "alta": {
+          "mediana": 5.639,
+          "iqr": 0.348
+        }
+      },
+      "minmax_bruto_p99": 0.154,
+      "minmax_bruto_max_valido": 43.62,
+      "escalonado_evento_max": 29.2,
+      "evento_no_conjunto": "validacao"
+    },
+    "lacuna_sobre_evento": {
+      "lacuna_s": 60,
+      "media_real_mm_s": 9.48,
+      "media_linear_mm_s": 9.22,
+      "media_locf_mm_s": 5.79
+    },
+    "validacao_por_regime": [
+      {
+        "regime": "parada",
+        "n": 5222,
+        "media_bruto": 0.265,
+        "media_tratado": 0.248,
+        "dp_bruto": 0.71,
+        "dp_tratado": 0.078,
+        "dp_filtrado": 0.036,
+        "p99_bruto": 0.43,
+        "p99_tratado": 0.43
+      },
+      {
+        "regime": "vazio",
+        "n": 3891,
+        "media_bruto": 1.641,
+        "media_tratado": 1.598,
+        "dp_bruto": 1.123,
+        "dp_tratado": 0.183,
+        "dp_filtrado": 0.093,
+        "p99_bruto": 2.05,
+        "p99_tratado": 2.04
+      },
+      {
+        "regime": "carga",
+        "n": 11239,
+        "media_bruto": 3.812,
+        "media_tratado": 3.778,
+        "dp_bruto": 1.047,
+        "dp_tratado": 0.341,
+        "dp_filtrado": 0.183,
+        "p99_bruto": 4.6,
+        "p99_tratado": 4.57
+      },
+      {
+        "regime": "alta",
+        "n": 7645,
+        "media_bruto": 5.848,
+        "media_tratado": 5.807,
+        "dp_bruto": 1.451,
+        "dp_tratado": 1.038,
+        "dp_filtrado": 0.958,
+        "p99_bruto": 12.9,
+        "p99_tratado": 12.64
+      }
+    ],
+    "filtros": [
+      {
+        "Filtro": "Média móvel (11 s)",
+        "Redução do ruído (%)": 72.0,
+        "Amplitude do impacto preservada (%)": 26.7,
+        "Atraso na subida da falha (s)": 1
+      },
+      {
+        "Filtro": "Mediana móvel (11 s)",
+        "Redução do ruído (%)": 65.2,
+        "Amplitude do impacto preservada (%)": 5.7,
+        "Atraso na subida da falha (s)": 0
+      },
+      {
+        "Filtro": "Suavização exponencial (α = 0,2)",
+        "Redução do ruído (%)": 68.3,
+        "Amplitude do impacto preservada (%)": 41.0,
+        "Atraso na subida da falha (s)": 5
+      },
+      {
+        "Filtro": "Savitzky–Golay (11 s, ordem 2)",
+        "Redução do ruído (%)": 55.7,
+        "Amplitude do impacto preservada (%)": 56.0,
+        "Atraso na subida da falha (s)": 0
+      },
+      {
+        "Filtro": "Savitzky–Golay + proteção de eventos",
+        "Redução do ruído (%)": 55.7,
+        "Amplitude do impacto preservada (%)": 100.0,
+        "Atraso na subida da falha (s)": 0
+      }
+    ],
+    "detectores": [
+      {
+        "Método": "Escore z global (|z| > 3)",
+        "Picos falsos encontrados": "36 de 36",
+        "Leituras normais marcadas": 0,
+        "Leituras de eventos reais marcadas": "120 de 154"
+      },
+      {
+        "Método": "Regra do IQR global",
+        "Picos falsos encontrados": "36 de 36",
+        "Leituras normais marcadas": 0,
+        "Leituras de eventos reais marcadas": "121 de 154"
+      },
+      {
+        "Método": "Hampel por regime (|z| > 6)",
+        "Picos falsos encontrados": "36 de 36",
+        "Leituras normais marcadas": 48,
+        "Leituras de eventos reais marcadas": "129 de 154"
+      },
+      {
+        "Método": "Hampel + corroboração (proposto)",
+        "Picos falsos encontrados": "36 de 36",
+        "Leituras normais marcadas": 0,
+        "Leituras de eventos reais marcadas": "0 de 154"
+      }
+    ],
+    "imputacao_erro_medio_mm_s": [
+      {
+        "Lacuna (s)": 1,
+        "Média geral": 1.26,
+        "Média do regime": 0.3,
+        "Último valor (LOCF)": 0.42,
+        "Linear": 0.34,
+        "Spline cúbica": 0.4
+      },
+      {
+        "Lacuna (s)": 5,
+        "Média geral": 1.31,
+        "Média do regime": 0.29,
+        "Último valor (LOCF)": 0.41,
+        "Linear": 0.35,
+        "Spline cúbica": 0.68
+      },
+      {
+        "Lacuna (s)": 30,
+        "Média geral": 1.28,
+        "Média do regime": 0.3,
+        "Último valor (LOCF)": 0.39,
+        "Linear": 0.36,
+        "Spline cúbica": 2.44
+      },
+      {
+        "Lacuna (s)": 60,
+        "Média geral": 1.25,
+        "Média do regime": 0.3,
+        "Último valor (LOCF)": 0.41,
+        "Linear": 0.37,
+        "Spline cúbica": 4.92
+      }
+    ],
+    "escalas": [
+      {
+        "Leitura": "Típica em vazio",
+        "mm/s": 1.6,
+        "Min-Max geral": 0.04,
+        "Escore z geral": -0.78,
+        "Robusta por regime": -0.09
+      },
+      {
+        "Leitura": "Típica em carga",
+        "mm/s": 3.77,
+        "Min-Max geral": 0.09,
+        "Escore z geral": 0.17,
+        "Robusta por regime": -0.02
+      },
+      {
+        "Leitura": "Típica em carga alta",
+        "mm/s": 5.68,
+        "Min-Max geral": 0.13,
+        "Escore z geral": 1.01,
+        "Robusta por regime": 0.12
+      },
+      {
+        "Leitura": "Pico da falha real",
+        "mm/s": 15.78,
+        "Min-Max geral": 0.36,
+        "Escore z geral": 5.42,
+        "Robusta por regime": 29.15
+      }
+    ],
+    "gabarito_sintetico": {
+      "picos_espurios": 36,
+      "fora_da_faixa": 7,
+      "ausentes": 575,
+      "duplicados": 180,
+      "evento_real_inicio": "2026-10-20 12:23:20"
+    }
+  }
+}
