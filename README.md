@@ -40,3 +40,17 @@ make -C relatorio        # relatorio/build/relatorio.pdf e relatorio.docx
 
 Usa `pandoc`, `lualatex` e Graphviz locais quando existem; senão, roda em um
 contêiner (podman ou docker).
+
+## Como citar
+
+O relatório cita o pacote pela versão marcada com a *tag* `v1.2.0` (ABNT NBR 6023):
+
+> CARNEIRO, Claudio Ferreira. **vibracao**: pacote Python de pré-processamento
+> de dados de um sensor de vibração industrial. Versão 1.2.0. [S.l.]: GitHub,
+> 2026. Disponível em:
+> <https://github.com/carneirofc/1322010-2025.3-A--IoT-Sensor-Data-Analysis/tree/v1.2.0>.
+> Acesso em: 29 out. 2026.
+
+A entrada BibTeX está em `relatorio/bib/references.bib` (`carneiro2026vibracao`).
+A versão do pacote (`pyproject.toml`), o campo `pipeline_versao` de
+`analise/saida/auditoria.json` e a *tag* devem ser iguais.
