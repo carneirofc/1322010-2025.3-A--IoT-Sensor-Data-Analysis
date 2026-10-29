@@ -641,6 +641,21 @@ em caixa alta. Utiliza-se antes do nome da conferencia a expressao "In". Segundo
           <text macro="access"/>
           <!--URL, data do acesso-->
         </else-if>
+        <!--Programa de computador / repositorio (documento em meio eletronico)-->
+        <else-if type="software">
+          <group>
+            <text macro="author" suffix=". "/>
+            <!--Autor-->
+            <text macro="title" suffix=". "/>
+            <!--Titulo-->
+            <text variable="version" prefix="Versão " suffix=". "/>
+            <!--Versao-->
+            <text macro="publisher" suffix=". "/>
+            <!--Local: plataforma, data-->
+            <text macro="access" suffix="."/>
+            <!--URL, data do acesso-->
+          </group>
+        </else-if>
         <else>
           <text macro="author" suffix=". "/>
           <!--Autor-->
