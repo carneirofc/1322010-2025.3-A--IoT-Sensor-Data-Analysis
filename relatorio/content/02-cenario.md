@@ -18,11 +18,14 @@ O enunciado não detalha o sensor, então foram adotadas as hipóteses abaixo:
 ## Dados usados na demonstração
 
 Como a atividade não fornece dados, foram geradas oito horas de leituras
-sintéticas (28 800 instantes) com o pacote Python `analise/vibracao`. Os
+sintéticas (28 800 instantes) com o pacote Python `vibracao`, versão 1.2.0,
+disponível no repositório do trabalho [@carneiro2026vibracao]. Os
 dados reproduzem cada característica do enunciado e incluem dois eventos
 reais, para verificar se o tratamento os preserva (Tabela 1). Como os
 problemas foram inseridos de propósito, é possível conferir o resultado de
-cada etapa.
+cada etapa. O mesmo pacote aplica o pipeline, faz as comparações e gera as
+figuras de dados e as tabelas de resultados deste relatório; com ele, os
+resultados podem ser obtidos de novo a partir dos mesmos dados.
 
 : Problemas e eventos inseridos nos dados sintéticos.
 

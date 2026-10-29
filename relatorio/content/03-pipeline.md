@@ -422,19 +422,20 @@ guarda as informações da Tabela 8.
 | Valores bruto, tratado e filtrado de cada leitura | Comparar cada transformação |
 | *Flag* de cada leitura (ausente, inválida, saturada, pico falso, evento, preenchida, lacuna longa, transição) | Saber o que foi feito em cada ponto |
 | Regime e escore $z$ de cada leitura | Explicar por que um ponto foi classificado |
-| Parâmetros, com código de verificação (*hash*) e versão do script | Provar qual configuração gerou o resultado |
+| Parâmetros, com código de verificação (*hash*) e versão do pacote | Provar qual configuração gerou o resultado |
 | *Hash* dos arquivos de entrada e semente do gerador sintético | Confirmar que o tratamento partiu dos mesmos dados |
 | Parâmetros de escala calculados no treino | Aplicar a mesma escala aos dados novos |
 | Contagens de cada etapa e lista de eventos | Acompanhar a qualidade e investigar eventos |
 
 Fonte: Elaborado pelo autor (2026).
 
-O script grava essas informações em quatro arquivos: as entradas brutas, como
+O pacote grava essas informações em quatro arquivos: as entradas brutas, como
 foram recebidas (`entrada_vibracao.csv.gz` e `entrada_corrente.csv.gz`);
 `serie_tratada.csv.gz`, com uma linha por segundo; e `auditoria.json`, com os
 parâmetros, os *hashes* SHA-256 das entradas e do código, a semente do gerador
-sintético (1322010), as contagens e os eventos. Com a mesma semente, o script
-gera exatamente os mesmos dados, e os *hashes* confirmam isso. Por exemplo, o impacto real fica registrado assim no arquivo de
+sintético (1322010), as contagens e os eventos. Com a mesma semente, o pacote
+gera exatamente os mesmos dados, e os *hashes* confirmam isso. Esses arquivos
+estão na pasta `analise/saida` do repositório [@carneiro2026vibracao]. Por exemplo, o impacto real fica registrado assim no arquivo de
 auditoria:
 
 ```text

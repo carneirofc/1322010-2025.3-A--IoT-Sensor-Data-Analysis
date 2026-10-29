@@ -81,7 +81,7 @@ lot: true              # Lista de tabelas
 #  Use "Times New Roman" / "Arial" if they're installed locally.
 # ---------------------------------------------------------------------------
 mainfont: TeX Gyre Termes
-# Code (appendix): Liberation Mono covers the Greek letters and math symbols
-# used in the script's comments (α, ≈), which Latin Modern Mono lacks.
+# Code (inline): Liberation Mono covers the Greek letters and math symbols
+# (α, ≈) that Latin Modern Mono lacks.
 monofont: Liberation Mono
 monofontoptions: [Scale=MatchLowercase]
