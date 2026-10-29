@@ -1,0 +1,42 @@
+// Figura 3 — Sequência de decisão aplicada a cada leitura.
+// Gerado no build: diagramas/*.dot -> figures/*.png (scripts/build.sh).
+// Para editar: mude os textos (label) ou as cores abaixo e rode `make`.
+digraph decisao {
+  graph [rankdir=TB, splines=ortho, nodesep=0.9, ranksep=0.35, pad=0.1, bgcolor=white];
+  node  [shape=box, style="rounded,filled", fontname="Liberation Serif", fontsize=12,
+         fontcolor="#0b0b0b", width=2.6, height=0.62, fixedsize=true, penwidth=1.2];
+  edge  [color="#52514e", penwidth=1.2, arrowsize=0.7,
+         fontname="Liberation Serif", fontsize=10, fontcolor="#52514e"];
+
+  inicio [shape=plaintext, style="", label=<<I>Cada leitura, depois da Etapa 2<BR/>(saturada: registrada como 50 mm/s e marcada)</I>>, fixedsize=false];
+
+  // Perguntas (coluna da esquerda)
+  node [fillcolor="#eef4fc", color="#2a78d6"];
+  q1 [label="Valor negativo ou\nsensor travado?"];
+  q2 [label="Desvio grande para o\nregime (|z| > 6)?"];
+  q3 [label="Curto (até 3 s) e corrente\nestável (|z| da corrente ≤ 3)?"];
+  q4 [label="Durante troca\nde regime?"];
+
+  // Resultados (coluna da direita)
+  node [color="#52514e", penwidth=0.9];
+  r1 [label="Inválido: vira ausente",     fillcolor="#fbe3e2"];
+  r2 [label="Normal: mantém",             fillcolor="#f1f0ec"];
+  r3 [label="Pico falso: remove e marca", fillcolor="#fbe3e2"];
+  r4 [label="Indeterminado (transição):\nmantém e marca",  fillcolor="#f1f0ec"];
+  evento [label=<<B>Evento real:<BR/>preserva e investiga</B>>, fillcolor="#fdeee6", color="#eb6834", penwidth=1.4];
+
+  { rank=same; q1; r1; }
+  { rank=same; q2; r2; }
+  { rank=same; q3; r3; }
+  { rank=same; q4; r4; }
+
+  inicio -> q1;
+  q1 -> r1 [xlabel="sim "];
+  q1 -> q2 [xlabel="não "];
+  q2 -> r2 [xlabel="não "];
+  q2 -> q3 [xlabel="sim "];
+  q3 -> r3 [xlabel="sim "];
+  q3 -> q4 [xlabel="não "];
+  q4 -> r4 [xlabel="sim "];
+  q4 -> evento [xlabel="não "];
+}

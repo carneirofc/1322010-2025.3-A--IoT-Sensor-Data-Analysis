@@ -1,0 +1,34 @@
+// Figura 2 — Etapas do pipeline de pré-processamento.
+// Gerado no build: diagramas/*.dot -> figures/*.png (scripts/build.sh).
+// Para editar: mude os textos (label) ou as cores abaixo e rode `make`.
+digraph pipeline {
+  graph [rankdir=TB, splines=ortho, nodesep=0.3, ranksep=0.5, pad=0.1, bgcolor=white,
+         fontname="Liberation Serif", fontsize=13, fontcolor="#6250d6",
+         labelloc=b, label=<<BR/><I>Em todas as etapas: dado bruto preservado, flags por amostra e parâmetros registrados</I>>];
+  node  [shape=box, style="rounded,filled", fillcolor="#eef4fc", color="#2a78d6", penwidth=1.4,
+         fontname="Liberation Serif", fontsize=12, fontcolor="#0b0b0b",
+         width=1.6, height=0.85, fixedsize=true, margin=0.05];
+  edge  [color="#52514e", penwidth=1.2, arrowsize=0.7];
+
+  // Linha de cima
+  e1 [label=<<B>1. Conhecer</B><BR/><FONT POINT-SIZE="10" COLOR="#52514e">ficha do sensor e<BR/>regimes de operação</FONT>>];
+  e2 [label=<<B>2. Estrutura</B><BR/><FONT POINT-SIZE="10" COLOR="#52514e">duplicatas, ordem<BR/>e grade de 1 s</FONT>>];
+  e3 [label=<<B>3. Validade</B><BR/><FONT POINT-SIZE="10" COLOR="#52514e">faixa física e<BR/>sensor travado</FONT>>];
+  e4 [label=<<B>4. Outliers</B><BR/><FONT POINT-SIZE="10" COLOR="#52514e">Hampel por regime<BR/>e corroboração</FONT>>];
+
+  // Linha de baixo
+  e5 [label=<<B>5. Faltantes</B><BR/><FONT POINT-SIZE="10" COLOR="#52514e">interpolar só<BR/>lacunas de até 5 s</FONT>>];
+  e6 [label=<<B>6. Filtragem</B><BR/><FONT POINT-SIZE="10" COLOR="#52514e">Savitzky–Golay sem<BR/>suavizar eventos</FONT>>];
+  e7 [label=<<B>7. Escala</B><BR/><FONT POINT-SIZE="10" COLOR="#52514e">só para modelos:<BR/>robusta por regime</FONT>>];
+  e8 [label=<<B>8. Validação</B><BR/><FONT POINT-SIZE="10" COLOR="#52514e">estatísticas e<BR/>eventos preservados</FONT>>];
+
+  { rank=same; e1 -> e2 -> e3 -> e4; }
+  { rank=same; e5 -> e6 -> e7 -> e8; }
+
+  // Alinha as colunas (arestas invisíveis) e liga o fim da linha de cima ao início da de baixo.
+  e1 -> e5 [style=invis];
+  e2 -> e6 [style=invis];
+  e3 -> e7 [style=invis];
+  e4 -> e8 [style=invis];
+  e4 -> e5 [constraint=false];
+}
