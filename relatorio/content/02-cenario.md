@@ -18,7 +18,7 @@ O enunciado não detalha o sensor, então foram adotadas as hipóteses abaixo:
 ## Dados usados na demonstração
 
 Como a atividade não fornece dados, foram geradas oito horas de leituras
-sintéticas (28 800 instantes) com o script `analise/pipeline_vibracao.py`. Os
+sintéticas (28 800 instantes) com o pacote Python `analise/vibracao`. Os
 dados reproduzem cada característica do enunciado e incluem dois eventos
 reais, para verificar se o tratamento os preserva (Tabela 1). Como os
 problemas foram inseridos de propósito, é possível conferir o resultado de

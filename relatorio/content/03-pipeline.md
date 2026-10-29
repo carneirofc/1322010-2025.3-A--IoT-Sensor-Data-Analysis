@@ -432,7 +432,7 @@ Fonte: Elaborado pelo autor (2026).
 O script grava essas informações em quatro arquivos: as entradas brutas, como
 foram recebidas (`entrada_vibracao.csv.gz` e `entrada_corrente.csv.gz`);
 `serie_tratada.csv.gz`, com uma linha por segundo; e `auditoria.json`, com os
-parâmetros, os *hashes* SHA-256 das entradas e do script, a semente do gerador
+parâmetros, os *hashes* SHA-256 das entradas e do código, a semente do gerador
 sintético (1322010), as contagens e os eventos. Com a mesma semente, o script
 gera exatamente os mesmos dados, e os *hashes* confirmam isso. Por exemplo, o impacto real fica registrado assim no arquivo de
 auditoria:
