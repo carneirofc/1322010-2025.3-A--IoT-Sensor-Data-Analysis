@@ -1,0 +1,20 @@
+# Shared pandoc options (paths are relative to the repo root; build from there).
+metadata-files:
+  - report.yaml
+resource-path: [".", "content", "figures", "assets"]
+filters:
+  # citeproc first, so citations inside floats (e.g. "Fonte: ... @key")
+  # are already rendered when ufjf-front.lua turns them into raw LaTeX.
+  - citeproc
+  - template/filters/ufjf-front.lua
+csl: template/csl/abnt.csl
+bibliography:
+  - bib/references.bib
+number-sections: true
+toc: true
+toc-depth: 2
+syntax-highlighting: tango
+metadata:
+  lang: pt-BR
+  link-citations: true
+  toc-title: SUMÁRIO

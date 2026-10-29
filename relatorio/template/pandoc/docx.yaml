@@ -1,0 +1,5 @@
+# DOCX — styles (A4, ABNT margins, Times 12, 1.5 spacing, cover styles)
+# come from template/docx/reference.docx (regenerate: make reference-docx).
+defaults:
+  - template/pandoc/common.yaml
+reference-doc: template/docx/reference.docx

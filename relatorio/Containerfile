@@ -1,0 +1,6 @@
+# Reproducible build environment: pandoc + TeX Live (LuaLaTeX) + Python 3.
+FROM docker.io/pandoc/extra:3.9
+RUN apk add --no-cache bash make graphviz font-liberation && fc-cache -f
+RUN tlmgr update --self \
+ && tlmgr install tex-gyre babel-portuges hyphen-portuguese titlesec fancyhdr caption placeins \
+ && luaotfload-tool --update

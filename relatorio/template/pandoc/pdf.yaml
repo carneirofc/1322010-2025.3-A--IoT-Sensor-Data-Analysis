@@ -1,0 +1,17 @@
+# PDF via LuaLaTeX — ABNT NBR 14724 page layout.
+defaults:
+  - template/pandoc/common.yaml
+pdf-engine: lualatex
+include-in-header:
+  - template/latex/header.tex
+variables:
+  documentclass: article
+  papersize: a4
+  geometry: [a4paper, left=3cm, right=2cm, top=3cm, bottom=2cm]
+  fontsize: 12pt
+  linestretch: 1.5
+  colorlinks: true
+  linkcolor: black
+  toccolor: black
+  citecolor: black
+  urlcolor: blue

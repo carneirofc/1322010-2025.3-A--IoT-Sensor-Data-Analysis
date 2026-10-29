@@ -1,0 +1,53 @@
+% ---- Included in the LaTeX preamble (see template/pandoc/pdf.yaml). ----
+
+\usepackage{setspace}
+\usepackage{graphicx}
+
+% Long code lines wrap instead of overflowing the margin.
+\usepackage{fvextra}
+\fvset{breaklines=true,breakanywhere=true,fontsize=\small}
+
+% Tables: smaller type, tighter columns (the filter emits them as `tabular`
+% inside a `table` float; `longtable` is kept for raw use). Pandoc loads these
+% packages only for native tables, which the filter has already replaced.
+\usepackage{longtable,booktabs,array,calc}
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\footnotesize}
+\AtBeginEnvironment{tabular}{\footnotesize}
+\setlength{\tabcolsep}{4pt}
+
+% Floats stay close to the text that references them and never drift past
+% the end of their section.
+\usepackage{float}
+\floatplacement{figure}{htbp}
+\usepackage[section]{placeins}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.8}
+
+% ABNT: primary sections in bold caps, secondary in bold.
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{\MakeUppercase}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont}{\thesubsubsection}{1em}{}
+\titlespacing*{\section}{0pt}{1.5\baselineskip}{\baselineskip}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{0.5\baselineskip}
+
+% ABNT: page number top-right; pretextual pages are counted but not printed
+% (the front-matter filter switches to "empty" and back to "fancy").
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\fancyhf{}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyhead[R]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+
+% Captions (ABNT NBR 14724): "Figura 1 – ..." / "Tabela 1 – ..." above the
+% figure or table, "Fonte: ..." below; the filter keeps all three inside the
+% same float.
+\usepackage{caption}
+\captionsetup{labelsep=endash,font=small,justification=centering,skip=6pt,position=top}
+
+% ABNT: each pretextual list on its own page.
+\pretocmd{\listoffigures}{\clearpage}{}{}
+\pretocmd{\listoftables}{\clearpage}{}{}
